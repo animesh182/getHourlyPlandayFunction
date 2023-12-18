@@ -130,16 +130,14 @@ async def fetch_planday():
                         actual_data[dep_name][date_key][hour_key]['duration'] += timedelta(hours=duration)
                         actual_data[dep_name][date_key][hour_key]['cost'] += cost
 
-
-        with pd.ExcelWriter('departmental_data.xlsx', engine='openpyxl') as writer:
-            for dep_name, dep_data in actual_data.items():
-
+        flattened_data = []
+        for dep_name, dep_data in actual_data.items():
                 sheet_name = restaurantnames.get(dep_name, dep_name)  # Fallback to dep_name if not in restaurant_name
+                logging.info(sheet_name)
                 if not sheet_name or len(sheet_name) > 31 or any(char in sheet_name for char in '/*\\[]:?'):
                     logging.info(f"Invalid sheet name for department {dep_name}: {sheet_name}. Skipping.")
                     continue
 
-                flattened_data = []
                 for date, hours in dep_data.items():
                     for hour, values in hours.items():
                         duration_hours = values['duration'].total_seconds() / 3600
@@ -147,13 +145,9 @@ async def fetch_planday():
                             'Date': date,
                             'Hour': hour,
                             'Duration': duration_hours,
-                            'Cost': values['cost']
+                            'Cost': values['cost'],
+                            'Restaurant':sheet_name
                         }
                         flattened_data.append(row)
-
-                if not flattened_data:
-                    logging.info(f"No data for {sheet_name}. Skipping.")
-                    continue
-                
-                df = pd.DataFrame(flattened_data)
+        df = pd.DataFrame(flattened_data)
     return df
