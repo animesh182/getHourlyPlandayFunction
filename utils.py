@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta,datetime
 def convert_to_decimal_hours(time_str):
     try:
         print(time_str)
@@ -71,3 +71,9 @@ def ensure_int(value):
         return value
     else:
         return 0
+
+def parse_datetime(data):
+    # Splitting the string at the decimal point to ignore fractional seconds
+    date_string = data.split('.')[0]
+    # Parsing the date-time string without fractional seconds
+    return datetime.fromisoformat(date_string)

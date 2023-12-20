@@ -3,13 +3,14 @@ import httpx
 from datetime import datetime, timedelta
 import pandas as pd
 
-from utils import timedelta_to_str, str_to_timedelta, ensure_timedelta, ensure_int
+from utils import timedelta_to_str, str_to_timedelta, ensure_timedelta, ensure_int,parse_datetime
 from PlandayHourly.restaurant_names import restaurantnames
 async def fetch_planday():
     today_date = datetime.today()
-    start_date = (today_date - timedelta(weeks=1)).strftime('%Y-%m-%d')
-    end_date = (today_date + timedelta(weeks=1)).strftime('%Y-%m-%d')
-
+    start_date = (today_date - timedelta(weeks=2)).strftime('%Y-%m-%d')
+    end_date = (today_date + timedelta(weeks=2)).strftime('%Y-%m-%d')
+    # start_date='2023-06-01'
+    # end_date='2023-12-31'
     client_id = "806cc44e-6e2f-4809-b955-65a96975fa52"
     refresh_token = "F_4jQsoAeEqcx_saD84lrQ"
     token_endpoint = "https://id.planday.com"
@@ -80,8 +81,8 @@ async def fetch_planday():
             payroll_data = payroll_json_response["shiftsPayroll"]
 
             for data in payroll_data:
-                start = datetime.fromisoformat(data['start'])
-                end = datetime.fromisoformat(data['end'])
+                start = parse_datetime(data['start'])
+                end = parse_datetime(data['end'])
                 rate = data['wage']['rate']
                 if rate==0:
                     pay_headers = {
