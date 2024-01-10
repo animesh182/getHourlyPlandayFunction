@@ -7,10 +7,10 @@ from utils import timedelta_to_str, str_to_timedelta, ensure_timedelta, ensure_i
 from PlandayHourly.restaurant_names import restaurantnames
 async def fetch_planday():
     today_date = datetime.today()
-    start_date = (today_date - timedelta(weeks=2)).strftime('%Y-%m-%d')
-    end_date = (today_date + timedelta(weeks=2)).strftime('%Y-%m-%d')
-    # start_date='2023-06-01'
-    # end_date='2023-12-31'
+    # start_date = (today_date - timedelta(weeks=2)).strftime('%Y-%m-%d')
+    # end_date = (today_date + timedelta(weeks=2)).strftime('%Y-%m-%d')
+    start_date='2024-01-01'
+    end_date='2024-01-31'
     client_id = "806cc44e-6e2f-4809-b955-65a96975fa52"
     refresh_token = "F_4jQsoAeEqcx_saD84lrQ"
     token_endpoint = "https://id.planday.com"
