@@ -12,13 +12,22 @@ from utils import (
 )
 from PlandayHourly.constants import restaurantnames
 
+list_to_ignore =  [
+    148686, 
+    146157, 
+    2414, 
+    2418,
+    2447,
+    2439,
+    2417
+    ]
 
 async def fetch_planday(client_id, refresh_token):
     today_date = datetime.today()
     start_date = (today_date - timedelta(weeks=2)).strftime("%Y-%m-%d")
     end_date = (today_date + timedelta(weeks=2)).strftime("%Y-%m-%d")
-    # start_date = "2024-01-01"
-    # end_date = "2024-01-31"
+    start_date = "2023-12-01"
+    end_date = "2024-01-01"
     token_endpoint = "https://id.planday.com"
     api_endpoint = "https://openapi.planday.com"
     timeout_duration = 30.0
@@ -68,7 +77,7 @@ async def fetch_planday(client_id, refresh_token):
             dep_name = department_data["name"]
             dep_id = department_data["id"]
 
-            if dep_name in ["Los Tacos (morselskap/adm)", "Drammen"]:
+            if dep_id in list_to_ignore:
                 continue
 
             payroll_headers = {
@@ -157,7 +166,7 @@ async def fetch_planday(client_id, refresh_token):
             sheet_name = restaurantnames.get(
                 dep_name, dep_name
             )  # Fallback to dep_name if not in restaurant_name
-            logging.info(sheet_name)
+
             if (
                 not sheet_name
                 or len(sheet_name) > 31

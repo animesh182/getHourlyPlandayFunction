@@ -25,7 +25,7 @@ params = {
 def handle_planday(df):
     df['date'] = pd.to_datetime(df['date']).dt.date
     df['id'] = df['id'].apply(lambda x: str(x))
-
+    df.to_csv('temp.csv')
     insert_statement = """
     INSERT INTO public."Predictions_hourlyemployeecostandhoursinfo"(
     date,hour,employee_hours, employee_cost, restaurant, company,id  )
