@@ -23,3 +23,4 @@ company_data = {
         "refresh_token": "NzTsFtfzvE28jLmex3gHnw",
     },
 }
+list_to_ignore = [148686, 146157, 2414, 2418, 2447, 2439, 2417]

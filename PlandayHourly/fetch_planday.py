@@ -10,9 +10,7 @@ from utils import (
     ensure_int,
     parse_datetime,
 )
-from PlandayHourly.constants import restaurantnames
-
-list_to_ignore = [148686, 146157, 2414, 2418, 2447, 2439, 2417]
+from PlandayHourly.constants import restaurantnames, list_to_ignore
 
 
 async def fetch_planday(client_id, refresh_token):
