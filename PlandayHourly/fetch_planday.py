@@ -12,22 +12,15 @@ from utils import (
 )
 from PlandayHourly.constants import restaurantnames
 
-list_to_ignore =  [
-    148686, 
-    146157, 
-    2414, 
-    2418,
-    2447,
-    2439,
-    2417
-    ]
+list_to_ignore = [148686, 146157, 2414, 2418, 2447, 2439, 2417]
+
 
 async def fetch_planday(client_id, refresh_token):
     today_date = datetime.today()
     start_date = (today_date - timedelta(weeks=2)).strftime("%Y-%m-%d")
     end_date = (today_date + timedelta(weeks=2)).strftime("%Y-%m-%d")
-    start_date = "2023-12-01"
-    end_date = "2024-01-01"
+    # start_date = "2024-02-01"
+    # end_date = "2024-03-01"
     token_endpoint = "https://id.planday.com"
     api_endpoint = "https://openapi.planday.com"
     timeout_duration = 30.0
