@@ -12,6 +12,7 @@ restaurantnames = {
     "Steen og Strøm": "Oslo Steen_Strom",
     "Drift Olav Kyrres Gate 27 AS": "Bergen",
     "Fisketorget Stavanger AS": "Restaurant",
+    "Alex Kiellands": "Alexander Kielland",
 }
 company_data = {
     "Los Tacos": {
