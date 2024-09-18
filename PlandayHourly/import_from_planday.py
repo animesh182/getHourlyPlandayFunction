@@ -35,9 +35,9 @@ def handle_planday(df):
 
     insert_statement = """
     INSERT INTO public."Predictions_hourlyemployeecostandhoursinfo"(
-    date,hour,employee_hours, employee_cost, employee_count, restaurant, company,id  )
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-    ON CONFLICT (date,hour,restaurant,company)
+    date,hour,employee_hours, employee_cost, employee_count, restaurant, company,department,id  )
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s ,%s)
+    ON CONFLICT (date,hour,restaurant,company,department)
     DO UPDATE SET
         employee_cost = EXCLUDED.employee_cost,
         employee_hours = EXCLUDED.employee_hours,
@@ -55,8 +55,8 @@ def handle_planday(df):
                     restaurant= row["restaurant"]
                     company = row["company"]
                     id = row["id"]
-
-                    cur.execute(insert_statement,(date, hour, employee_hours, employee_cost, employee_count, restaurant, company, id) )
+                    department = None
+                    cur.execute(insert_statement,(date, hour, employee_hours, employee_cost, employee_count, restaurant, company, department, id) )
 
                 # # Transform your DataFrame to a list of tuples, including the id column
                 # tuples = [tuple(x) for x in df.to_records(index=False)]

@@ -19,6 +19,7 @@ def transform_planday(data, company):
     # Add the company column from the original data
     transformed_data["restaurant"] = data["Restaurant"]
     transformed_data["company"] = company
+    transformed_data["department"] = None
     transformed_data["id"] = [uuid.uuid4() for _ in range(len(transformed_data))]
     logging.info("Data transformed to Krunch format")
     return transformed_data
