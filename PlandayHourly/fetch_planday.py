@@ -16,8 +16,8 @@ async def fetch_planday(client_id, refresh_token):
     today_date = datetime.today()
     start_date = (today_date - timedelta(weeks=2)).strftime("%Y-%m-%d")
     end_date = (today_date + timedelta(weeks=2)).strftime("%Y-%m-%d")
-    # start_date = "2023-12-01"
-    # end_date = "2024-04-15"
+    # start_date = "2024-09-01"
+    # end_date = "2024-09-02"
     token_endpoint = "https://id.planday.com"
     api_endpoint = "https://openapi.planday.com"
     timeout_duration = 30.0
