@@ -55,7 +55,7 @@ def handle_planday(df):
                     restaurant= row["restaurant"]
                     company = row["company"]
                     id = row["id"]
-                    department = None
+                    department = "None"
                     cur.execute(insert_statement,(date, hour, employee_hours, employee_cost, employee_count, restaurant, company, department, id) )
 
                 # # Transform your DataFrame to a list of tuples, including the id column
