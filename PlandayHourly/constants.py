@@ -14,6 +14,7 @@ restaurantnames = {
     "Fisketorget Stavanger AS": "Restaurant",
     "Alex Kiellands": "Alexander Kielland",
     "Bjørvika": "Bjørvika",
+    "Majorstua": "Majorstuen"
     # "Servering": "Restaurantdrift AS",  # there are two departments in Broker Servering and kjokken
     # "Kjøkken": "Restaurantdrift AS",
 }
