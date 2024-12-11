@@ -32,4 +32,4 @@ company_data = {
     #     "refresh_token": "0IcvJxpX3k6VeeEWN14QxA",
     # }
 }
-list_to_ignore = [148686, 146157, 2414, 2418, 2447, 2439, 2417]
+list_to_ignore = [148686,2414, 2418, 2447, 2439, 2417]
